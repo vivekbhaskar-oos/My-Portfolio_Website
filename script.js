@@ -315,6 +315,7 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   const updateCursorPosition = (event) => {
     if (event.pointerType === "touch") return;
 
+    document.documentElement.classList.add("custom-cursor-active");
     pointerX = event.clientX;
     pointerY = event.clientY;
     cursor.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0)`;
@@ -339,6 +340,7 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   document.addEventListener("pointerenter", updateCursorPosition);
 
   document.addEventListener("pointerleave", () => {
+    document.documentElement.classList.remove("custom-cursor-active");
     cursor.classList.remove("is-visible");
     trail.classList.remove("is-visible");
     cursorRing.classList.remove("is-visible", "is-clickable");

@@ -1964,9 +1964,10 @@ footer {
 }
 
 @media (hover: hover) and (pointer: fine) {
-    *,
-    *::before,
-    *::after {
+    html.custom-cursor-active,
+    html.custom-cursor-active *,
+    html.custom-cursor-active *::before,
+    html.custom-cursor-active *::after {
         cursor: none;
     }
 
