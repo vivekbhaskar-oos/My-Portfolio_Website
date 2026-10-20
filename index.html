@@ -14,6 +14,52 @@
   </head>
 
   <body>
+    <div class="intro-screen" role="status" aria-label="Welcome to Vivek Bhaskar Portfolio Website">
+      <div class="intro-content">
+        <div class="intro-mark">
+          <span class="intro-flash" aria-hidden="true"></span>
+          <span class="intro-burst" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span class="intro-orbit intro-orbit-one"></span>
+          <span class="intro-orbit intro-orbit-two"></span>
+          <img src="c.jpg" alt="" />
+        </div>
+        <p class="intro-eyebrow">Welcome to</p>
+        <h1 class="intro-name">
+          <span class="intro-name-text">Vivek Bhaskar</span>
+          <span class="intro-name-sparks" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </span>
+        </h1>
+        <p class="intro-caption"> My Portfolio Website</p>
+        <span class="intro-loader" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="cosmic-background" aria-hidden="true">
+      <canvas class="particle-canvas"></canvas>
+      <div class="starfield starfield-far"></div>
+      <div class="starfield starfield-near"></div>
+      <div class="space-planet space-planet-large">
+        <span class="planet-ring planet-ring-outer planet-ring-back"></span>
+        <span class="planet-ring planet-ring-inner planet-ring-back"></span>
+        <span class="planet-core planet-core-large"></span>
+        <span class="planet-ring planet-ring-outer planet-ring-front"></span>
+        <span class="planet-ring planet-ring-inner planet-ring-front"></span>
+      </div>
+      <div class="space-planet space-planet-small">
+        <span class="planet-ring planet-ring-outer planet-ring-back"></span>
+        <span class="planet-ring planet-ring-inner planet-ring-back"></span>
+        <span class="planet-core"></span>
+        <span class="planet-ring planet-ring-outer planet-ring-front"></span>
+        <span class="planet-ring planet-ring-inner planet-ring-front"></span>
+      </div>
+    </div>
+
     <header class="navbar">
       <a href="#home" class="logo">
         <img src="c.jpg" alt="" />
@@ -55,7 +101,7 @@
               Contact Me
             </a>
 
-            <a href="resume.pdf" class="btn secondary" download="Vivek-Bhaskar-Resume.pdf">
+            <a href="Vivek-Bhaskar-Resume.docx" class="btn secondary" download="Vivek-Bhaskar-Resume.docx">
               <i class="fa-solid fa-download" aria-hidden="true"></i>
               Download Resume
             </a>
@@ -127,7 +173,7 @@
           </div>
         </div>
 
-        <div class="about-box">
+        <div class="about-box"
           <div class="about-copy">
             <h3>Schooling &amp; Intermediate Education</h3>
             <p>
@@ -161,13 +207,26 @@
             <span class="project-number">01</span>
             <h3>Portfolio Website</h3>
             <p>
-              A modern portfolio built to showcase my skills, work, and contact
-              information in a clean and professional layout.
+             A modern and responsive personal portfolio website showcasing my skills, projects, and experience as a BCA student and aspiring software developer.<br>
+             <br>
+            Features: <br>
+            Responsive Design,
+            About Me ,Skills, Projects, 
+            Contact Form, Social Links
             </p>
+              <bR>
+             <H5> Technology Used :</h5>
+HTML,
+CSS,
+JAVA SCRIPT
+<a href="https://vivekbhaskar-oos.github.io/new-portfolio/ " target="_blank" class="project-btn">
+    View Project →
+</a>
+                        
             <div class="tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
+              <span>Web Development</span>
+              <span>Responsive Design</span>
+              
             </div>
           </article>
 
@@ -185,17 +244,32 @@
           </article>
 
           <article class="project-card">
-            <span class="project-number">03</span>
-            <h3>Web App UI</h3>
-            <p>
-              A concept interface focused on usability, readability, and smooth
-              interactions for modern digital products.
-            </p>
-            <div class="tags">
-              <span>UI/UX</span>
-              <span>Design</span>
-            </div>
-          </article>
+  <span class="project-number">01</span>
+
+  <h3>🌦️ Weather App</h3>
+
+  <p>
+Real-Time Weather & Location:<br>
+Developed a responsive weather app that provides real-time weather information based on the searched city or user's current location.
+Key Features:<br>
+📍 Current location detection<br>
+🔎 City weather search<br>
+🌡️ Temperature & weather conditions<br>
+💧 Humidity & wind speed<br>
+🌿 Air quality information<br>
+  </p>
+
+  <p>
+    <h5>Technology Used:</h5> HTML, CSS, JavaScript
+  </p>
+  <a href=" " target="_blank" class="project-btn">
+    View Project →
+</a>
+  <div class="tags">
+    <span>Web Development</span>
+    <span>Responsive Design</span>
+  </div>
+</article>
         </div>
       </section>
 
@@ -321,10 +395,10 @@
               Whether you have a project idea, an opportunity, or simply want to
               connect, feel free to reach out through my professional profiles.
             </p>
-            <a class="contact-cta" href="mailto:vivekaryavivekarya1@gmail.com">
+            <button class="contact-cta" id="open-contact-form" type="button" aria-haspopup="dialog">
               Email me
               <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </a>
+            </button>
           </div>
 
           <div class="contact-links">
@@ -380,7 +454,41 @@
             </a>
           </div>
         </div>
+
+        <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+          <div class="contact-dialog-header">
+            <div>
+              <span class="contact-eyebrow">EMAIL CONTACT</span>
+              <h3 id="contact-dialog-title">Your contact details</h3>
+            </div>
+            <button class="contact-dialog-close" type="button" aria-label="Close form">&times;</button>
+          </div>
+          <form id="contact-form">
+            <label>
+              Name
+              <input name="name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              Mobile number
+              <input name="phone" type="tel" autocomplete="tel" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <p class="contact-form-note">Submit karne par tumhara email app khulega. Wahan Send dabakar details bhej dena.</p>
+            <button class="contact-cta contact-form-submit" type="submit">
+              Continue to email
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
+        </dialog>
       </section>
     </main>
+    <svg class="cursor-trail" aria-hidden="true">
+      <path></path>
+    </svg>
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
   </body>
 </html>
