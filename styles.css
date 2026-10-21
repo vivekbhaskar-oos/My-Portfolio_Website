@@ -1971,6 +1971,16 @@ footer {
         cursor: none;
     }
 
+    html.custom-cursor-active input,
+    html.custom-cursor-active textarea,
+    html.custom-cursor-active [contenteditable="true"] {
+        cursor: text;
+    }
+
+    html.custom-cursor-active select {
+        cursor: auto;
+    }
+
     .cursor-dot,
     .cursor-trail,
     .cursor-ring {

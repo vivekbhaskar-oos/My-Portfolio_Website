@@ -263,9 +263,11 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   const textEntrySelector = 'input, textarea, select, [contenteditable="true"]';
   const cursorElements = [cursor, trail, cursorRing];
 
-  const setTextEntryCursor = (target) => {
-    const isTextEntry = target instanceof Element && Boolean(target.closest(textEntrySelector));
-    cursorElements.forEach((element) => element.classList.toggle("is-hidden", isTextEntry));
+  const setNativeCursor = (target) => {
+    const isNativeCursorTarget = target instanceof Element
+      && Boolean(target.closest(`${clickableSelector}, ${textEntrySelector}`));
+    document.documentElement.classList.toggle("custom-cursor-active", !isNativeCursorTarget);
+    cursorElements.forEach((element) => element.classList.toggle("is-hidden", isNativeCursorTarget));
   };
 
   const scheduleCursorFrame = () => {
@@ -315,7 +317,7 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   const updateCursorPosition = (event) => {
     if (event.pointerType === "touch") return;
 
-    document.documentElement.classList.add("custom-cursor-active");
+    setNativeCursor(event.target);
     pointerX = event.clientX;
     pointerY = event.clientY;
     cursor.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0)`;
@@ -350,11 +352,11 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   document.addEventListener("pointerover", (event) => {
     const target = event.target instanceof Element ? event.target.closest(clickableSelector) : null;
     cursorRing.classList.toggle("is-clickable", Boolean(target));
-    setTextEntryCursor(event.target);
+    setNativeCursor(event.target);
   });
 
   document.addEventListener("pointerout", (event) => {
-    setTextEntryCursor(event.relatedTarget);
+    setNativeCursor(event.relatedTarget);
     const nextTarget = event.relatedTarget instanceof Element
       ? event.relatedTarget.closest(clickableSelector)
       : null;
