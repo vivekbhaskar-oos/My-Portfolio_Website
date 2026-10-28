@@ -263,11 +263,9 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   const textEntrySelector = 'input, textarea, select, [contenteditable="true"]';
   const cursorElements = [cursor, trail, cursorRing];
 
-  const setNativeCursor = (target) => {
-    const isNativeCursorTarget = target instanceof Element
-      && Boolean(target.closest(`${clickableSelector}, ${textEntrySelector}`));
-    document.documentElement.classList.toggle("custom-cursor-active", !isNativeCursorTarget);
-    cursorElements.forEach((element) => element.classList.toggle("is-hidden", isNativeCursorTarget));
+  const setTextEntryCursor = (target) => {
+    const isTextEntry = target instanceof Element && Boolean(target.closest(textEntrySelector));
+    cursorElements.forEach((element) => element.classList.toggle("is-hidden", isTextEntry));
   };
 
   const scheduleCursorFrame = () => {
@@ -317,7 +315,6 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   const updateCursorPosition = (event) => {
     if (event.pointerType === "touch") return;
 
-    setNativeCursor(event.target);
     pointerX = event.clientX;
     pointerY = event.clientY;
     cursor.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0)`;
@@ -342,7 +339,6 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   document.addEventListener("pointerenter", updateCursorPosition);
 
   document.addEventListener("pointerleave", () => {
-    document.documentElement.classList.remove("custom-cursor-active");
     cursor.classList.remove("is-visible");
     trail.classList.remove("is-visible");
     cursorRing.classList.remove("is-visible", "is-clickable");
@@ -352,11 +348,11 @@ if (cursor && trail && cursorRing && finePointer.matches) {
   document.addEventListener("pointerover", (event) => {
     const target = event.target instanceof Element ? event.target.closest(clickableSelector) : null;
     cursorRing.classList.toggle("is-clickable", Boolean(target));
-    setNativeCursor(event.target);
+    setTextEntryCursor(event.target);
   });
 
   document.addEventListener("pointerout", (event) => {
-    setNativeCursor(event.relatedTarget);
+    setTextEntryCursor(event.relatedTarget);
     const nextTarget = event.relatedTarget instanceof Element
       ? event.relatedTarget.closest(clickableSelector)
       : null;
